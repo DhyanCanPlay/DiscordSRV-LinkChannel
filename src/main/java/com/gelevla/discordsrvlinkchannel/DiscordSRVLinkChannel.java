@@ -1,6 +1,5 @@
 package com.gelevla.discordsrvlinkchannel;
 
-import com.tchristofferson.configupdater.ConfigUpdater;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -11,9 +10,6 @@ import org.bstats.bukkit.Metrics;
 import github.scarsz.discordsrv.DiscordSRV;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
 
 public final class DiscordSRVLinkChannel extends JavaPlugin implements Listener {
 
@@ -26,14 +22,6 @@ public final class DiscordSRVLinkChannel extends JavaPlugin implements Listener 
         getServer().getPluginManager().registerEvents(this, this);
 
         saveDefaultConfig();
-        File configFile = new File(getDataFolder(), "config.yml");
-
-        try {
-            ConfigUpdater.update(this, "config.yml", configFile, Arrays.asList("RemoveMessages"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         reloadConfig();
 
         int pluginId = 15021; // <-- Replace with the id of your plugin!
